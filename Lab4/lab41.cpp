@@ -26,37 +26,45 @@ void MedImage :: seeimg(){
 };
 
 MRI :: MRI(){
-	// FILL IN INITIALIZATIONS
+	imagetype = 'Type 1';
+	samperpix = 1;
+	bitall = 16;
+	photoint = 'MONOCHROME1' || 'MONOCHROME2';
 };
 
 US :: US(){
-	// FILL IN INITIALIZATIONS
+	imagetype = 'Type 2';
+	//samperpix = 1;
+	//bitall = 16;
+	photoint = 'PALETTE COLOR' || 'MONOCHROME2' || 'RGB' || 'YBR_FULL' || 'YBR_FULL_422' || 'YBR_PARTIAL_422' || 'YBR_RCT' || 'YBR_ICT' || 'YBR_PARTIAL_420';
 };
 
 CT:: CT(){
-	// FILL IN INITIALIZATIONS
+	imagetype = 'Type 1';
+	samperpix = 1;
+	bitall = 16;
+	photoint = 'MONOCHROME1' || 'MONOCHROME2';
 };
 
-string MedImage :: typeofimage(string image){
-	cout << "Please specify if the image is an MRI, US, or CT image:";
+int MedImage :: typeofimage(int image){
+	cout << "Please specify if the image is 1. MRI \n 2. US \n or 3. CT: \n";
 	cin >> image;
 
-switch(image){
-
-case 'MRI':
-	MRI mri;
-	break;
-
-case 'US':
-	US us;
-	break;
-
-case 'CT':
-	CT ct;
-	break;
-}
+	if (image == 1){
+		MRI mri;
+	}
+	else if (image == 2){
+		US us;
+	}
+	else if (image == 3){
+		CT ct;
+	}
+	else
+	{
+		cout << "Please enter 1,2, or 3";
+	}
 
 return(image);
 };
 
-void MedImage :: storeinfo(string &image){};
+void MedImage :: storeinfo(int &image){};

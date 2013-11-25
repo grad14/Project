@@ -21,15 +21,15 @@ protected:
 	int samperpix; 		// attribute: samples per pixel
 	int bitall; 		// attribute: bits allocated
 	string photoint; 	// attribute: photometric interpretation
-	string image; 		// variable to determine type of image
+	int image; 		// variable to determine type of image
 
 public:
 	string name; char id;
 	MedImage();								// Constructor to create MedImage object
 	void addannot(string name, char id); 	// MedImage contains annotation/comment - name/id associated with it
 	void seeimg(); 							// launch external image viewer to display image i.e. checks results of class MedImage
-	string typeofimage(string image); 		// function allows radiologist to specify type of image
-	void storeinfo(string &image); 			// append info of medical-image to patient file (array)
+	int typeofimage(int image); 			// function allows radiologist to specify type of image
+	void storeinfo(int &image); 			// append info of medical-image to patient file (array)
 	// complete storeinfo function
 };
 
