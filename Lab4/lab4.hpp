@@ -44,7 +44,7 @@ private:
 	int sar; 			// SAR
 
 public:
-	MRI(int echotime, int echonum, int imagfreq, int magfstren, int sar); 	// use initilization list to specify common attributes
+	MRI(int, int, int, int, int); 	// use initilization list to specify common attributes
 
 };
 
@@ -58,7 +58,7 @@ private:
 	int lesnum; 		// lesion number
 
 public:
-	US(int nominterval, int viewnum, int trigtime, int focdepth, int lesnum); 	// use initilization list to specify common attributes
+	US(int, int, int, int, int); 	// use initilization list to specify common attributes
 };
 
 class CT : public MedImage {
@@ -71,7 +71,7 @@ private:
 	int dissourtopat; 	// distance source-to-patient
 
 public:
-	CT(int expotime, int genpow, int curr, int dissourtodet, int dissourtopat);   // use initilization list to specify common attributes
+	CT(int, int, int, int, int);   // use initilization list to specify common attributes
 };
 
 #endif /* LAB4_HPP_ */
