@@ -25,15 +25,15 @@ void MedImage :: seeimg(){
 	system("start gimp-2.8.exe MRI.jpg");
 };
 
-void MRI :: MRI(){
+MRI :: MRI(){
 	// FILL IN INITIALIZATIONS
 };
 
-void US :: US(){
+US :: US(){
 	// FILL IN INITIALIZATIONS
 };
 
-void CT:: CT(){
+CT:: CT(){
 	// FILL IN INITIALIZATIONS
 };
 
