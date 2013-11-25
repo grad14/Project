@@ -30,7 +30,7 @@ public:
 	void seeimg(); 							// launch external image viewer to display image i.e. checks results of class MedImage
 	int typeofimage(int image); 			// function allows radiologist to specify type of image
 	void storeinfo(int &image); 			// append info of medical-image to patient file (array)
-	// complete storeinfo function
+
 };
 
 
