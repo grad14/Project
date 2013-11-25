@@ -28,8 +28,8 @@ public:
 	MedImage();								// Constructor to create MedImage object
 	void addannot(string name, char id); 	// MedImage contains annotation/comment - name/id associated with it
 	void seeimg(); 							// launch external image viewer to display image i.e. checks results of class MedImage
-	void typeofimage(string image); 		// function allows radiologist to specify type of image
-	void storeinfo(); 						// append info of medical-image chart to patient file (array)
+	string typeofimage(string image); 		// function allows radiologist to specify type of image
+	void storeinfo(string &image); 			// append info of medical-image chart to patient file (array)
 	// complete storeinfo function
 };
 

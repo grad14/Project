@@ -37,7 +37,7 @@ void CT:: CT(){
 	// FILL IN INITIALIZATIONS
 };
 
-void MedImage :: typeofimage(string image){
+string MedImage :: typeofimage(string image){
 	cout << "Please specify if the image is an MRI, US, or CT image:";
 	cin >> image;
 
@@ -56,5 +56,7 @@ case 'CT':
 	break;
 }
 
+return(image);
 };
 
+void MedImage :: storeinfo(string &image){};
