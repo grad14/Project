@@ -13,7 +13,7 @@ int main() {
 	double r = 5.0;
 	double circle;
 
-	circle = 2 * r;
+	circle = 2 * 10 * r;
 	cout << circle;
 
 return 0;
