@@ -22,7 +22,7 @@ void MedImage :: addannot(string name, char id){
 };
 
 void MedImage :: seeimg(){
-	system("start gimp-2.8.exe MRI.jpg");
+	system("start gimp-2.8.exe");
 };
 
 MRI :: MRI(int et, int en, int imf, int mfs, int s){
