@@ -17,7 +17,8 @@ using namespace std;
 class Chart {
 
 public:
-	Chart();
+	static Chart * ptr;
+	Chart();				// houses Medical Image class, Blood Test class, and Physical Test class
 	virtual void addtest();
 	void addannotation();
 	void genreport();
@@ -39,12 +40,12 @@ public:
 	MedImage();								// Constructor to create MedImage object
 	virtual ~MedImage();    				// destructor to prevent dervied class object to be deleted from a base class pointer
 
-	virtual void addtest();					// Scenario #1
+	void addtest();							// Scenario #1
+	void addannot(string &name, char &id); 	// Scenario #2
 
-	void addannot(string name, char id); 	// MedImage contains annotation/comment - name/id associated with it
 	void seeimg(); 							// launch external image viewer to display image i.e. checks results of class MedImage
-	int typeofimage(int image); 			// function allows radiologist to specify type of image
-	void storeinfo(int &image); 			// append info of medical-image to patient file (array)
+	void typeofimage(int &image); 			// function allows radiologist to specify type of image
+	void storeinfo(string imagetype, int samperpix, int bitall, string photoint); 						// append info of medical-image to patient file (array)
 
 };
 
@@ -59,7 +60,7 @@ private:
 	int sar; 			// SAR
 
 public:
-	MRI(int, int, int, int, int); 	// use initilization list to specify common attributes
+	MRI(string &imagetype, int &samperpix, int &bitall, string &photoint, int &, int &, int &, int &, int &); 	// use initilization list to specify common attributes
 	virtual ~MRI();
 };
 
@@ -73,7 +74,7 @@ private:
 	int lesnum; 		// lesion number
 
 public:
-	US(int, int, int, int, int); 	// use initilization list to specify common attributes
+	US(string &imagetype, int &samperpix, int &bitall, string &photoint, int &, int &, int &, int &, int &); 	// use initilization list to specify common attributes
 	virtual ~US();
 };
 
@@ -87,7 +88,7 @@ private:
 	int dissourtopat; 	// distance source-to-patient
 
 public:
-	CT(int, int, int, int, int);   // use initilization list to specify common attributes
+	CT(string &imagetype, int &samperpix, int &bitall, string &photoint, int &, int &, int &, int &, int &);   // use initilization list to specify common attributes
 	virtual ~CT();
 };
 

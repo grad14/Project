@@ -9,10 +9,11 @@
 #include <string.h>
 #include <cstdlib>
 #include "lab4.hpp"
+#include <fstream>
 
 using namespace std;
 
-void MedImage :: addannot(string name, char id){
+void MedImage :: addannot(string &name, char &id){
 	cout << "Please enter your name and id";
 	cin >> name >> id;
 
@@ -25,7 +26,7 @@ void MedImage :: seeimg(){
 	system("start gimp-2.8.exe");
 };
 
-MRI :: MRI(int et, int en, int imf, int mfs, int s){
+MRI :: MRI(string &imagetype, int &samperpix, int &bitall, string &photoint, int &et, int &en, int &imf, int &mfs, int &s){
 	echotime = et; echonum = en; imagfreq = imf; magfstren = mfs; sar = s;
 
 	imagetype = 'Type 1';
@@ -34,24 +35,25 @@ MRI :: MRI(int et, int en, int imf, int mfs, int s){
 	photoint = 'MONOCHROME1' || 'MONOCHROME2';
 
 	cout << "Please enter the values for the following attributes:\n";
-	cin >> "Echo time:\t" >> et >> "Echo Number:\t" >> en >> "Image frequency:\t" >> imf >> "Magnetic Field Strength:\t" >> mfs >> "SAR:\t" >> s;
+	cout << "Echo time, Echo Number, Image frequency, Magnetic Field Strength, SAR";
+	cin >> et >> en >> imf >> mfs >> s;
 };
 
-US :: US(int ni, int vn, int tt, int fd, int ln){
+US :: US(string &imagetype, int &samperpix, int &bitall, string &photoint, int &ni, int &vn, int &tt, int &fd, int &ln){
 	nominterval = ni; viewnum = vn; trigtime = tt; focdepth = fd; lesnum = ln;
 
 	imagetype = 'Type 2';
-	if (photoint == 'MONOCHROME2' || 'PALETTE COLOR')
-		{samperpix = 1;}
+	if (photoint = "MONOCHROME2" || "PALETTE COLOR") {samperpix = 1;}
 	else {samperpix = 3;}
 	bitall = 8;
 	photoint = 'PALETTE COLOR' || 'MONOCHROME2' || 'RGB' || 'YBR_FULL' || 'YBR_FULL_422' || 'YBR_PARTIAL_422' || 'YBR_RCT' || 'YBR_ICT' || 'YBR_PARTIAL_420';
 
 	cout << "Please enter the values for the following attributes:\n";
-	cin >> "Nominal Interval:\t" >> ni >> "View Number:\t" >> vn >> "Trigger Time:\t" >> tt >> "Focus Depth:\t" >> fd >> "Lesion Number:\t" >> ln;
+	cout <<	"Nominal Interval, View Number, Trigger Time, Focus Depth, Lesion Number\n";
+	cin >> ni >> vn >> tt >> fd >> ln;
 };
 
-CT:: CT(int ext, int gp, int c, int dtd, int dtp){
+CT:: CT(string &imagetype, int &samperpix, int &bitall, string &photoint, int &ext, int &gp, int &c, int &dtd, int &dtp){
 	expotime = ext; genpow = gp; curr = c; dissourtodet = dtd; dissourtopat = dtp;
 
 	imagetype = 'Type 1';
@@ -60,28 +62,39 @@ CT:: CT(int ext, int gp, int c, int dtd, int dtp){
 	photoint = 'MONOCHROME1' || 'MONOCHROME2';
 
 	cout << "Please enter the values for the following attributes:\n";
-	cin >> "Exposure time:\t" >> ext >> "Generator Power:\t" >> gp >> "Current:\t" >> c >> "Distance-source-to-dectector:\t" >> dtd >> "Distance-source-to-patient:\t" >> dtp;
+	cout << "Exposure time, Generator Power, Current, Distance-source-to-dectector, Distance-source-to-patient";
+	cin >> ext >> gp >> c >> dtd >> dtp;
 };
 
-int MedImage :: typeofimage(int image){
+void MedImage :: typeofimage(int &image){
 	cout << "Please specify if the image is 1. MRI \n 2. US \n or 3. CT: \n";
 	cin >> image;
 
 	if (image == 1){
-		MRI mri;
+		MRI mri(string &imagetype, int &samperpix, int &bitall, string &photoint, int &, int &, int &, int &, int &);
 	}
 	else if (image == 2){
-		US us;
+		US us(string &imagetype, int &samperpix, int &bitall, string &photoint, int &, int &, int &, int &, int &);
+
 	}
 	else if (image == 3){
-		CT ct;
+		CT ct(string &imagetype, int &samperpix, int &bitall, string &photoint, int &, int &, int &, int &, int &);
 	}
 	else
 	{
 		cout << "Please enter 1,2, or 3";
 	}
-
-return(image);
 };
 
-void MedImage :: storeinfo(int &image){};
+void MedImage :: storeinfo(string imagetype, int samperpix, int bitall, string photoint){
+
+	fstream myfile;
+	myfile.open("MedImage.txt");
+	myfile << "Imagetype: \t" << imagetype << "\n";
+	myfile << "Samples per pixel: \t" << samperpix << "\n";
+	myfile << "Bits Allocated: \t" << bitall << "\n";
+	myfile << "Photo Interpretation: \t" << photoint << "\n";
+	myfile.close();
+
+};
+
